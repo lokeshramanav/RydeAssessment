@@ -5,12 +5,33 @@ const {generateMeaningFullErrorMessage} = require("../service/handleErrorMessage
 
 exports.createUser = async(req, res)=>{
     try{
-        console.log("Req body" , req.body)
-        var user = await userRepository.createUser(req.body);
+        let user = await userRepository.createUser(req.body);
         res.status(200).send(generateSuccessResponse(user))
 
     }catch(error){
         console.log("Error" , error.message);
         res.status(400).send(generateFaliureResponse(generateMeaningFullErrorMessage(error)))
+    }
+}
+
+exports.findById = async(req,res)=>{
+    try{
+        let user = await userRepository.findUserById(req.params.id);
+        res.status(200).send(generateSuccessResponse(user));
+
+    }catch(error){
+        console.log("Error" , error.message);
+        res.status(400).send(generateFaliureResponse(generateMeaningFullErrorMessage(error)))
+    }
+}
+
+exports.updateUser = async(req, res)=>{
+    try{
+        let user = await userRepository.updateUserById(req.params.id , req.body);
+        res.status(200).send(generateSuccessResponse(user));
+    }
+    catch(error){
+    console.log("Error" , error.message);
+    res.status(400).send(generateFaliureResponse(generateMeaningFullErrorMessage(error)))
     }
 }
