@@ -1,8 +1,8 @@
 const express = require("express");
 const bodyParser = require('body-parser')
 const dotenv = require('dotenv')
-const swaggerUi = require("swagger-ui-express")
-const apiDoc = require("./docs/api-docs").apiDocumentation
+//const swaggerUi = require("swagger-ui-express")
+//const apiDoc = require("./docs/api-docs").apiDocumentation
 const db = require("./models");
 
 //Routes import
@@ -12,7 +12,7 @@ const app = express();
 
 
 //Middlewares
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(apiDoc));
+//app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(apiDoc));
 app.use(bodyParser.json())
 
 //Routes

@@ -4,7 +4,8 @@ const userValidator = require('../middlewares/validator.middleware')
 
 router.post("/", userValidator() , userController.createUser);
 router.get("/:id" , userController.findById);
-router.put("/:id" ,userValidator(), userController.updateUser);
+router.put("/:id" , userValidator(), userController.updateUser);
+router.delete("/:id" ,  userController.deleteUser);
 
 
 module.exports = router;

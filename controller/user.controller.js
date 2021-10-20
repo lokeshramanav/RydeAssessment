@@ -35,3 +35,14 @@ exports.updateUser = async(req, res)=>{
     res.status(400).send(generateFaliureResponse(generateMeaningFullErrorMessage(error)))
     }
 }
+
+exports.deleteUser = async(req , res)=>{
+    try{
+        let user = await userRepository.deleteUserById(req.params.id);
+        res.status(200).send(generateSuccessResponse(user));
+    }
+    catch(error){
+    console.log("Error" , error.message);
+    res.status(400).send(generateFaliureResponse(generateMeaningFullErrorMessage(error)))
+    }
+}
